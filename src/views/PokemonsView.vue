@@ -13,13 +13,18 @@ import { useGetData } from '../composables/useGetData';
           {{errorData}}
      </div>
      <div v-if="data">
-          <ul ><li v-for="pokemon in data.results">
-          <router-link :to="{name:'pokemon', params: { name: pokemon.name  }}">
-               {{pokemon.name}}
-          </router-link>  
-          </li></ul>
-          <button :disabled="!data.previous" class="btn btn-warning me-2" @click="getData(data.previous)">Prev</button>
-          <button :disabled="!data.next" class="btn btn-primary" @click="getData(data.next)">Next</button>
+          <ul class="list-group list-group-flush">
+               <li v-for="pokemon in data.results" class="list-group-item">
+               <router-link :to="{name:'pokemon', params: { name: pokemon.name  }}">
+                    {{pokemon.name}}
+               </router-link>  
+               </li>
+          </ul>
+          <div class="mt-2"> 
+               <button :disabled="!data.previous" class="btn btn-warning me-2" @click="getData(data.previous)">Prev</button>
+               <button :disabled="!data.next" class="btn btn-primary" @click="getData(data.next)">Next</button>
+          </div>
+          
      </div>
     
 </template> 
